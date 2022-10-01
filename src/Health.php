@@ -53,7 +53,7 @@ class Health
         $data = [];
         foreach ($memInfo as $item) {
             list($name, $value) = explode(':', $item);
-            $data[$name] = $value;
+            $data[$name] = intval($value);
         }
         var_dump($data);
         return true;
