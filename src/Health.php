@@ -14,12 +14,12 @@ class Health
 
     public function getDiskFreeSpace()
     {
-        return disk_free_space("/") / 1024 / 1024;
+        return round(disk_free_space("/") / 1024 / 1024);
     }
 
     public function getDiskFreeSpaceShare()
     {
-        return disk_free_space("/") / disk_total_space("/");
+        return round(disk_free_space("/") / disk_total_space("/") * 100);
     }
 
     public function getCpuTemperature()
@@ -61,8 +61,14 @@ class Health
         return $data;
     }
 
+    public function getMemoryFreeShare()
+    {
+        $memInfo = $this->getMemoryInfo();
+        return round($memInfo['MemAvailable'] / $memInfo['MemTotal'] * 100);
+    }
+
     public function getMemoryFree()
     {
-        return $this->getMemoryInfo()['MemAvailable'];
+        return round($this->getMemoryInfo()['MemAvailable'] / 1024);
     }
 }

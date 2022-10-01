@@ -6,8 +6,8 @@ $webhookUrl = $argv[1];
 $health = new Health();
 $text = [
     'Host' => gethostname(),
-    'Load average' => $health->getLoadAverage15min(),
-    'Disk Free Space' => $health->getDiskFreeSpace(),
+    'Load average' => round($health->getLoadAverage15min()),
+    'Disk Free Space' => $health->getDiskFreeSpaceShare(),
     'CPU temperature' => $health->getCpuTemperature(),
     'Free Memory' => $health->getMemoryFree(),
 ];
