@@ -22,6 +22,7 @@ foreach ($text as $key => $value) {
 $ch = curl_init($webhookUrl);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $resultText);
-curl_exec($ch);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$result = curl_exec($ch);
 
 
