@@ -7,9 +7,11 @@ $health = new Health();
 $text = [
     'Host' => gethostname(),
     'Load average' => round($health->getLoadAverage15min()),
-    'Disk Free Space' => $health->getDiskFreeSpaceShare(),
     'CPU temperature' => $health->getCpuTemperature(),
-    'Free Memory' => $health->getMemoryFree(),
+    'Free Memory' => $health->getMemoryFree() . "Mb",
+    'Free Memory share' => $health->getMemoryFreeShare() . "%",
+    'Disk Free Space' => round($health->getDiskFreeSpace()/1024) . "Gb",
+    'Disk Free Space share' => $health->getDiskFreeSpaceShare() . "%",
 ];
 
 $resultText = '';
