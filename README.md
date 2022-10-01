@@ -1,5 +1,5 @@
 # Server Health
-## Reading server status like CPU, Free RAM memory and Disk space on PHP
+## Reading server status like CPU temperature, Free RAM memory and Disk space on PHP
 
 No exec() execution needed. Only reading files like /proc/meminfo
 
