@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/src/Health.php';
+include __DIR__ . '/../src/Health.php';
 
 $health = new Health();
 echo 'Load average is ' . $health->getLoadAverage15min() . "\n";
