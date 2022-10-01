@@ -40,7 +40,7 @@ class Health
         }
     }
 
-    public function getFreeMemory()
+    public function getMemoryInfo()
     {
         if (!file_exists('/proc/meminfo')) {
             return false;
@@ -57,5 +57,9 @@ class Health
         }
         var_dump($data);
         return true;
+    }
+
+    public function getMemoryFree() {
+        return $this->getMemoryInfo()['MemAvailable'];
     }
 }
