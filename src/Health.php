@@ -64,6 +64,9 @@ class Health
     public function getMemoryFreeShare()
     {
         $memInfo = $this->getMemoryInfo();
+        if (!$memInfo['MemTotal']) {
+            return false;
+        }
         return round($memInfo['MemAvailable'] / $memInfo['MemTotal'] * 100);
     }
 
