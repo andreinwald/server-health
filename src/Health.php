@@ -55,8 +55,7 @@ class Health
             list($name, $value) = explode(':', $item);
             $data[$name] = intval($value);
         }
-        var_dump($data);
-        return true;
+        return $data;
     }
 
     public function getMemoryFree() {
