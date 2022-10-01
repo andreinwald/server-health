@@ -52,13 +52,17 @@ class Health
         $memInfo = explode("\n", $memInfo);
         $data = [];
         foreach ($memInfo as $item) {
-            list($name, $value) = explode(':', $item);
-            $data[$name] = intval($value);
+            $res = explode(':', $item);
+            if (!isset($res[1])) {
+                continue;
+            }
+            $data[$res[0]] = intval($res[1]);
         }
         return $data;
     }
 
-    public function getMemoryFree() {
+    public function getMemoryFree()
+    {
         return $this->getMemoryInfo()['MemAvailable'];
     }
 }
