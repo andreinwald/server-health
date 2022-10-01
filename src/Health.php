@@ -26,6 +26,9 @@ class Health
     {
         // sensors command
 
+        if (!file_exists('/sys/class/thermal/thermal_zone0/temp')) {
+            return false;
+        }
         $cpuTempCRaw = file_get_contents('/sys/class/thermal/thermal_zone0/temp');
         if (!$cpuTempCRaw || $cpuTempCRaw == "") {
             return false;
@@ -39,13 +42,20 @@ class Health
 
     public function getFreeMemory()
     {
+        if (!file_exists('/proc/meminfo')) {
+            return false;
+        }
         $memInfo = file_get_contents('/proc/meminfo');
+        if (!$memInfo) {
+            return false;
+        }
         $memInfo = explode("\n", $memInfo);
         $data = [];
         foreach ($memInfo as $item) {
             list($name, $value) = explode(':', $item);
             $data[$name] = $value;
         }
-        return $data;
+        var_dump($data);
+        return true;
     }
 }
